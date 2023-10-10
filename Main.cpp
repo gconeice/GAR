@@ -34,7 +34,7 @@
 // time testing
 #include <chrono>
 
-#define PLAIN
+// #define PLAIN
 
 using namespace std;
 using namespace SGC;
