@@ -40,9 +40,9 @@ using namespace std;
 using namespace SGC;
 using namespace chrono;
 
-#IFDEF PLAIN
+#ifdef PLAIN
 std::ofstream plfout("plain");
-#ENDIF
+#endfi
 
 std::chrono::time_point<std::chrono::system_clock> start1, start2, end1;
 
@@ -89,13 +89,13 @@ int main(int argc, char ** argv) {
   uint32_t max_acc_cnt = GenerateBBPath(giant_step, CFG, BBPath);
   std::cout << "MAXACC = " << max_acc_cnt << std::endl;
 
-#IFDEF PLAIN
+#ifdef PLAIN
   for (int i = 0; i < giant_step; i++) {
     plfout << i << " ";
     for (auto x : BBPath[i]) plfout << x << ' ';
     plfout << endl;
   }
-#ENDIF
+#endif
 
 
   if (string(argv[1]) == "Cleartext") {
