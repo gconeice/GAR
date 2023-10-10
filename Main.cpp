@@ -309,7 +309,7 @@ int main(int argc, char ** argv) {
 
     // for testing active inst cnts
 #ifdef PLAIN
-	fout << CFG.size() << std::endl;
+	plfout << CFG.size() << std::endl;
     for (auto &BB : CFG) {
       plfout << BB.start_addr << ' ' << BB.fragment.size() << ' ' << std::endl;
     }
