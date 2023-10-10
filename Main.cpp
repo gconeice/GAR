@@ -42,7 +42,7 @@ using namespace chrono;
 
 #ifdef PLAIN
 std::ofstream plfout("plain");
-#endfi
+#endif
 
 std::chrono::time_point<std::chrono::system_clock> start1, start2, end1;
 
