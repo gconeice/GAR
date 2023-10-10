@@ -118,11 +118,11 @@ int main(int argc, char ** argv) {
     //OpenAs(fin, as_program);
 
     std::cerr << "Running Alice..." << std::endl;
-    start1 = std::chrono::system_clock::now();
 
     // Establish connection with bob
     unsigned int initial_port = 8880;
     emp::NetIO *io = new emp::NetIO(nullptr, initial_port);
+    start1 = std::chrono::system_clock::now();
     SGC::setup_garbler(io);
 
     int bincnt, aincnt, pincnt;
