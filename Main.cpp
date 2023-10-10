@@ -32,11 +32,17 @@
 #include <emp-tool/emp-tool.h> // For NetIO
 
 // time testing
-#include <chrono>   
+#include <chrono>
+
+#define PLAIN
 
 using namespace std;
 using namespace SGC;
 using namespace chrono;
+
+#IFDEF PLAIN
+std::ofstream plfout("plain");
+#ENDIF
 
 std::chrono::time_point<std::chrono::system_clock> start1, start2, end1;
 
@@ -83,13 +89,14 @@ int main(int argc, char ** argv) {
   uint32_t max_acc_cnt = GenerateBBPath(giant_step, CFG, BBPath);
   std::cout << "MAXACC = " << max_acc_cnt << std::endl;
 
-  /*
+#IFDEF PLAIN
   for (int i = 0; i < giant_step; i++) {
-    cout << i << ": ";
-    for (auto x : BBPath[i]) cout << x << ' ';
-    cout << endl;
+    plfout << i << " ";
+    for (auto x : BBPath[i]) plfout << x << ' ';
+    plfout << endl;
   }
-  */
+#ENDIF
+
 
   if (string(argv[1]) == "Cleartext") {
     SGC::delta = SGC::prg();
