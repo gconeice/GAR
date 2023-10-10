@@ -89,13 +89,13 @@ int main(int argc, char ** argv) {
   uint32_t max_acc_cnt = GenerateBBPath(giant_step, CFG, BBPath);
   std::cout << "MAXACC = " << max_acc_cnt << std::endl;
 
-#ifdef PLAIN
-  for (int i = 0; i < giant_step; i++) {
-    plfout << i << " ";
-    for (auto x : BBPath[i]) plfout << x << ' ';
-    plfout << endl;
-  }
-#endif
+// #ifdef PLAIN
+//   for (int i = 0; i < giant_step; i++) {
+//     plfout << i << " ";
+//     for (auto x : BBPath[i]) plfout << x << ' ';
+//     plfout << endl;
+//   }
+// #endif
 
 
   if (string(argv[1]) == "Cleartext") {
@@ -119,10 +119,6 @@ int main(int argc, char ** argv) {
   if (string(argv[1]) == "Alice") {
 
     set_delta(key);
-    // Just comment out to see merge did not break anything
-    //vector<string> as_program; as_program.clear();
-    //ifstream fin(argv[2]);
-    //OpenAs(fin, as_program);
 
     std::cerr << "Running Alice..." << std::endl;
 
@@ -146,18 +142,6 @@ int main(int argc, char ** argv) {
     for (int i = 0; i < init_cnt; i++)
       arr_s.write(ix_s, val_s);
     
-    /*
-    const auto ix_s_0 = constant_nat<Mode::S>(log2(SGC::mem_n), 100 % SGC::mem_n);
-    const auto val_s_0 = constant_nat<Mode::S>(SGC::mem_w, 200);
-    const auto ix_s_1 = constant_nat<Mode::S>(log2(SGC::mem_n), 300 % SGC::mem_n);
-    const auto val_s_1 = constant_nat<Mode::S>(SGC::mem_w, 400); 
-    const auto ix_s_2 = constant_nat<Mode::S>(log2(SGC::mem_n), 100 % SGC::mem_n);
-    const auto val_s_2 = constant_nat<Mode::S>(SGC::mem_w, 200);
-    arr_s.write(ix_s_0, val_s_0);
-    arr_s.write(ix_s_1, val_s_1);
-    arr_s.write(ix_s_2, val_s_2);
-    */
-
     // Generate Mode::S Data (necessary!)
     // last arguments is the access #
     PrepareAccess(arr_s, SGC::mem_w, SGC::mem_n, max_acc_cnt);
@@ -199,67 +183,24 @@ int main(int argc, char ** argv) {
 
     fin.close();
 
-    /*
-    const auto ix_g_0 = constant_nat<Mode::G>(log2(SGC::mem_n), 1 % SGC::mem_n);
-    const auto val_g_0 = constant_nat<Mode::G>(SGC::mem_w, 3);
-    const auto ix_g_1 = constant_nat<Mode::G>(log2(SGC::mem_n), 2 % SGC::mem_n);
-    const auto val_g_1 = constant_nat<Mode::G>(SGC::mem_w, 13);
-    const auto ix_g_2 = constant_nat<Mode::G>(log2(SGC::mem_n), 0 % SGC::mem_n);
-    const auto val_g_2 = constant_nat<Mode::G>(SGC::mem_w, 2);
-    arr_g.write(ix_g_0, val_g_0);
-    arr_g.write(ix_g_1, val_g_1);
-    arr_g.write(ix_g_2, val_g_2);
-    */
-
-    //auto GR0 = SGC::Bit32<Role::Garbler>();
-    //auto x = SGC::Bit<Role::Garbler>(true, SGC::EVALUATOR);
     std::vector<SGC::Bit32<Role::Garbler>> reg(reg_cnt);
-
-    /*
-    
-    SGC::Fragment br0;
-    br0.push_back(SGC::Inst{OPCODE::MUL, REG::GR0, REG::GR0, REG::GR1, 0});   
-    br0.push_back(SGC::Inst{OPCODE::LOAD, REG::GR0, REG::GR0, REG::GR0, 0});   
-    br0.push_back(SGC::Inst{OPCODE::COPY, REG::GR0, REG::GR1, REG::GR1, 0});
-    SGC::Fragment br1;
-    br1.push_back(SGC::Inst{OPCODE::ADD, REG::GR0, REG::GR0, REG::GR1, 0});
-    br1.push_back(SGC::Inst{OPCODE::IMM, REG::GR1, REG::GR1, REG::GR1, 3});
-    br1.push_back(SGC::Inst{OPCODE::EQ, REG::GR0, REG::GR1, REG::GR0, 0});
-    br1.push_back(SGC::Inst{OPCODE::NOOP, REG::GR0, REG::GR0, REG::GR0, 0});   
-    SGC::Fragment br2;
-    br2.push_back(SGC::Inst{OPCODE::ADD, REG::GR0, REG::GR0, REG::GR1, 0});
-    br2.push_back(SGC::Inst{OPCODE::LOAD, REG::GR0, REG::GR0, REG::GR0, 0});
-    br2.push_back(SGC::Inst{OPCODE::STORE, REG::GR0, REG::GR0, REG::GR0, 0});
-    br2.push_back(SGC::Inst{OPCODE::XOR, REG::GR0, REG::GR0, REG::GR1, 0});
-    br2.push_back(SGC::Inst{OPCODE::ANDN0, REG::GR0, REG::GR0, REG::GR1, 0});
-    SGC::Fragment br3;
-    br3.push_back(SGC::Inst{OPCODE::ADD, REG::GR0, REG::GR0, REG::GR1, 0});
-    br3.push_back(SGC::Inst{OPCODE::STORE, REG::GR0, REG::GR0, REG::GR0, 0});
-    br3.push_back(SGC::Inst{OPCODE::LOAD, REG::GR0, REG::GR0, REG::GR0, 0});
-    br3.push_back(SGC::Inst{OPCODE::IMM, REG::GR0, REG::GR0, REG::GR0, 12345});
-    std::vector<Fragment> fragments;
-    fragments.push_back(br0);
-    fragments.push_back(br1);
-    fragments.push_back(br2);
-    fragments.push_back(br3);
-    */
-
-/*     GbExecuteOneSeg(reg, fragments, arr_g);
-    GbExecuteOneSeg(reg, fragments, arr_g);
- */
 
     for (int i = 0; i < giant_step; i++) {
       // for testing active inst cnts
-      // reg[REG::PC].Reveal();         
+#ifdef PLAIN
+      reg[REG::PC].Reveal();
+#endif
       // std::cout << "GBSTEP " << i << " : "  << SGC::material_id << std::endl;
       GbExecuteSingleBB(CFG, BBPath[i], reg, arr_g);
     }
 
+#ifndef PLAIN	
     reg[REG::GR0].Reveal();
     reg[REG::GR1].Reveal();
     reg[REG::GR2].Reveal();
     reg[REG::GR4].Reveal();
-    reg[REG::PC].Reveal();     
+    reg[REG::PC].Reveal();
+#endif
 
 
     start2 = std::chrono::system_clock::now();
@@ -345,91 +286,33 @@ int main(int argc, char ** argv) {
     }
 
     fin.close();
-    /*
-    const auto ix_e_0 = constant_nat<Mode::E>(log2(SGC::mem_n), 1 % SGC::mem_n);
-    const auto val_e_0 = constant_nat<Mode::E>(SGC::mem_w, 3);
-    const auto ix_e_1 = constant_nat<Mode::E>(log2(SGC::mem_n), 2 % SGC::mem_n);
-    const auto val_e_1 = constant_nat<Mode::E>(SGC::mem_w, 13);
-    const auto ix_e_2 = constant_nat<Mode::E>(log2(SGC::mem_n), 0 % SGC::mem_n);
-    const auto val_e_2 = constant_nat<Mode::E>(SGC::mem_w, 2);
-    arr_e.write(ix_e_0, val_e_0);
-    arr_e.write(ix_e_1, val_e_1);  
-    arr_e.write(ix_e_2, val_e_2);
-    */
 
     std::vector<SGC::Bit32<Role::Evaluator>> reg(reg_cnt);
 
-    /*
-    mem[0] = 2
-    mem[1] = 3
-    mem[2] = 13
-    */
-
-    /*
-    LOAD x y: reg[x] = mem[reg[y]]
-    STORE x y: mem[reg[x]] = reg[y]
-    BR0: MUL 0 0 1, LOAD 0 0 (reg[0] = mem[reg[0]])
-    BR1: ADD 0 0 1
-    BR2: ADD 0 0 1, LOAD 0 0, STORE 0 0
-    BR3: ADD 0 0 1, STORE 0 0, LOAD 0 0, IMM 0 12345
-    OUTPUT reg[0] finally
-    BR0: 3
-    BR1: 2
-    BR2: 13
-    BR3: 123456
-    */
-    /*
-    SGC::Fragment br0;
-    br0.push_back(SGC::Inst{OPCODE::MUL, REG::GR0, REG::GR0, REG::GR1, 0});   
-    br0.push_back(SGC::Inst{OPCODE::LOAD, REG::GR0, REG::GR0, REG::GR0, 0});   
-    br0.push_back(SGC::Inst{OPCODE::COPY, REG::GR0, REG::GR1, REG::GR1, 0});
-    SGC::Fragment br1;
-    br1.push_back(SGC::Inst{OPCODE::ADD, REG::GR0, REG::GR0, REG::GR1, 0});
-    br1.push_back(SGC::Inst{OPCODE::IMM, REG::GR1, REG::GR1, REG::GR1, 3});
-    br1.push_back(SGC::Inst{OPCODE::EQ, REG::GR0, REG::GR1, REG::GR0, 0});
-    br1.push_back(SGC::Inst{OPCODE::NOOP, REG::GR0, REG::GR0, REG::GR0, 0});   
-    SGC::Fragment br2;
-    br2.push_back(SGC::Inst{OPCODE::ADD, REG::GR0, REG::GR0, REG::GR1, 0});
-    br2.push_back(SGC::Inst{OPCODE::LOAD, REG::GR0, REG::GR0, REG::GR0, 0});
-    br2.push_back(SGC::Inst{OPCODE::STORE, REG::GR0, REG::GR0, REG::GR0, 0});
-    br2.push_back(SGC::Inst{OPCODE::XOR, REG::GR0, REG::GR0, REG::GR1, 0});
-    br2.push_back(SGC::Inst{OPCODE::ANDN0, REG::GR0, REG::GR0, REG::GR1, 0});
-    SGC::Fragment br3;
-    br3.push_back(SGC::Inst{OPCODE::ADD, REG::GR0, REG::GR0, REG::GR1, 0});
-    br3.push_back(SGC::Inst{OPCODE::STORE, REG::GR0, REG::GR0, REG::GR0, 0});
-    br3.push_back(SGC::Inst{OPCODE::LOAD, REG::GR0, REG::GR0, REG::GR0, 0});
-    br3.push_back(SGC::Inst{OPCODE::IMM, REG::GR0, REG::GR0, REG::GR0, 12345});
-    std::vector<Fragment> fragments;
-    fragments.push_back(br0);
-    fragments.push_back(br1);
-    fragments.push_back(br2);
-    fragments.push_back(br3);
-    */
-
-    /*    
-    EvExecuteOneSeg(reg, fragments, arr_e);
-    EvExecuteOneSeg(reg, fragments, arr_e);
-    */ 
     for (int i = 0; i < giant_step; i++) {
       // for testing active inst cnts
-      // reg[REG::PC].Reveal();      
+#ifdef PLAIN
+      reg[REG::PC].Reveal();
+#endif
       //std::cout << "EVSTEP " << i << " : "  << SGC::material_id << std::endl;
       EvExecuteSingleBB(CFG, BBPath[i], reg, arr_e);
 
     }
 
+#ifndef PLAIN
     reg[REG::GR0].Reveal();
     reg[REG::GR1].Reveal();
     reg[REG::GR2].Reveal();
     reg[REG::GR4].Reveal();
     reg[REG::PC].Reveal();
+#endif
 
     // for testing active inst cnts
-    /*
+#ifdef PLAIN
     for (auto &BB : CFG) {
-      std::cout << BB.start_addr << ' ' << BB.fragment.size() << ' ' << std::endl;
+      plfout << BB.start_addr << ' ' << BB.fragment.size() << ' ' << std::endl;
     }
-    */
+#endif
 
     end1 = std::chrono::system_clock::now();
 
@@ -437,6 +320,7 @@ int main(int argc, char ** argv) {
   
     std::cout << "e2e time: " << elapsed_seconds1.count() << "s\n";
 
+#ifndef PLAIN
     std::cerr << "Result:" << std::endl;
     int cccc = 0;
     size_t dddd = 0;
@@ -450,25 +334,22 @@ int main(int argc, char ** argv) {
       }
     }
     std::cerr << std::endl;
-
-
+#else
+    int cccc = 0;
+    size_t dddd = 0;
+    for (const auto &r : SGC::result_bits) {
+      dddd += r*(1 << cccc);
+      cccc++;
+      if (cccc == 32) {
+        plfout << dddd << endl;
+        dddd = 0;
+        cccc = 0;
+      }
+    }
+    std::cerr << std::endl;	
+#endif
     
   }
 
-  /*
-  // PRG Example
-  PRG prg_garbler; // initialize with random seed (garbler)
-  std::cout << "PRG Garbler seed: " << prg_garbler.get_seed() << std::endl;
-  PRG prg_evaluator (*prg_garbler.get_seed()); // initialize with a particular seed (evaluator)
-  std::cout << "PRG Evaluator seed: " << prg_garbler.get_seed() << std::endl;
-  // Verify both prgs produce the same strings
-  for (size_t idx = 0; idx < 10; idx++) {
-    std::bitset<128> block_gb = prg_garbler();
-    std::bitset<128> block_ev = prg_evaluator();
-    std::cerr << block_gb << std::endl;
-    std::cerr << block_ev << std::endl;
-    assert(block_gb == block_ev);
-  }
-  */
   return 0;
 }
