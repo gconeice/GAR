@@ -1,0 +1,15 @@
+total gram materials size: 1800942144bytes
+total materials size: 1845332384bytes
+materials transferred time: 10.8492s
+garbling time: 2.66514s
+and gates without sgc for branching: 360766
+and gates with sgc for branching: 360766
+
+sgc mat buf size in setup 2766194
+e2e time: 14.5085s
+Result:
+256
+511
+256
+255
+19

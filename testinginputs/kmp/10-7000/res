@@ -1,0 +1,27 @@
+TX:             cum:    164GB   peak:      0b   rates:      0b      0b      0b
+RX:                    1.02GB              0b               0b      0b      0b
+TOTAL:                  165GB              0b               0b      0b      0b 
+
+
+ubuntu@ip-172-31-29-235:~/SGC_MPC_Compiler/2PC/build$ ./SGC2PC Alice 21500 8192
+MAXACC = 21501
+Running Alice...
+connected
+Print Y if successfully connected: 
+Y
+Sending PRF key to evaluator... 
+{
+  rows:   634572151
+  wrows:  1235809477
+  bits:   19620111
+  bytes:  0
+  nonces: 10183040524
+}
+
+total gram materials size: 168356387583bytes
+total materials size: 173154112639bytes
+materials transferred time: 343.105s
+garbling time: 260.795s
+and gates without sgc for branching: 42964030
+and gates with sgc for branching: 16378356
+

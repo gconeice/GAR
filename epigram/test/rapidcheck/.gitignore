@@ -1,0 +1,10 @@
+/build*
+GPATH
+GRTAGS
+GTAGS
+TAGS
+ext/gmock
+ext/boost
+**/Makefile
+librapidcheck.a
+rapidcheckConfig.cmake

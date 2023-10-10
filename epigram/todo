@@ -1,0 +1,28 @@
+Augment ROOM w/ generation lookup table
+  Namely, each index is associated w/ a set of keys
+  The particular key should depend on the RAM timer
+  The association between RAM timer and which key is looked up is secret
+
+  Perhaps start by first just adding a simple lookup table at each index
+
+
+
+Slow loading stack
+  Each stack is accessed randomly.
+  Thus, the probability that a particular stack will exhaust O(sqrt(N))
+  elements faster than its sibling is negligible.
+  Design a "queue" with nondeterministic pop, but deterministic push.
+  By initializing the queue with O(sqrt(n)) elements and O(sqrt(n)) vacancies,
+  then deterministically filling at rate 1/2, we can be sure we will never exhaust a stack.
+
+
+
+Pull in the permutation code
+  Specialize for G and gates
+
+
+
+Suppressing the dummy elements
+
+
+Packing and unpacking

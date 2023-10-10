@@ -1,0 +1,6 @@
+[submodule "test/doctest"]
+	path = test/doctest
+	url = https://github.com/onqtam/doctest
+[submodule "test/rapidcheck"]
+	path = test/rapidcheck
+	url = https://github.com/emil-e/rapidcheck

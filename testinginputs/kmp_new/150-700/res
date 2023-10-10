@@ -1,0 +1,43 @@
+TX:             cum:   7.41GB   peak:    208b   rates:      0b      0b     10b
+RX:                    21.3MB            208b               0b      0b     10b
+TOTAL:                 7.44GB            416b               0b      0b     21b 
+
+ubuntu@ip-172-31-29-81:~/SGC_MPC_Compiler/2PC/build$ ./SGC2PC Alice 2700 1024
+bandwidth delay product 107364182
+MAXACC = 2701
+Running Alice...
+connected
+Print Y if successfully connected: 
+Y
+Sending PRF key to evaluator... 
+{
+  rows:   34137752
+  wrows:  52883108
+  bits:   973803
+  bytes:  0
+  nonces: 439545230
+}
+
+total gram materials size: 7316215659bytes
+total materials size: 7914492139bytes
+materials transferred time: 15.4312s
+garbling time: 21.1595s
+and gates without sgc for branching: 4779566
+and gates with sgc for branching: 1880404
+
+ubuntu@ip-172-31-29-212:~/SGC_MPC_Compiler/2PC/build$ ./SGC2PC Bob 2700 1024
+bandwidth delay product 107364182
+MAXACC = 2701
+Running Bob... 
+connected
+Print Y if successfully connected: 
+Y
+Receiving PRF key... 
+sgc mat buf size in setup 37387444
+e2e time: 46.3835s
+Result:
+700
+551
+1
+1
+51

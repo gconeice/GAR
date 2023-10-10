@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "span": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "optional": "cpp",
+        "string_view": "cpp",
+        "algorithm": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "streambuf": "cpp",
+        "functional": "cpp",
+        "variant": "cpp"
+    }
+}

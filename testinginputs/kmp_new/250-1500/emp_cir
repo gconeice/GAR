@@ -1,0 +1,8 @@
+ubuntu@ip-172-31-26-216:~/emp-sh2pc$ time ./bin/test_example 2 12345 125
+connected
+1251
+13,113,314,436
+
+real	12m12.663s
+user	10m32.084s
+sys	1m38.167s
