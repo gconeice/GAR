@@ -10,19 +10,19 @@ We made some small modifications for testing and fixing bugs.
 
 **Update Debian apt source:**
 
-echo "deb http://archive.debian.org/debian/ stretch main contrib non-free" > sources.list &&
+	 echo "deb http://archive.debian.org/debian/ stretch main contrib non-free" > sources.list &&
 
-echo "deb http://archive.debian.org/debian/ stretch-proposed-updates main contrib non-free" >> sources.list &&
+	 echo "deb http://archive.debian.org/debian/ stretch-proposed-updates main contrib non-free" >> sources.list &&
 
-echo "deb http://archive.debian.org/debian-security stretch/updates main contrib non-free" >> sources.list &&
+	 echo "deb http://archive.debian.org/debian-security stretch/updates main contrib non-free" >> sources.list &&
 
-sudo cp sources.list /etc/apt/sources.list &&
+	 sudo cp sources.list /etc/apt/sources.list &&
 
-sudo apt-get update
+	 sudo apt-get update
 
 **Build the compiling toolchain:**
 
-sudo bash setup.sh
+	sudo bash setup.sh
 
 We test above methods already on a vanilla Debian 9 x86_64 machine.
 
@@ -39,6 +39,7 @@ cp testinginput/psi/64/* ./    **(resp. 256, 1024)**
 bash comp.sh set_intersection.c
 
 Alice: ./run.sh a.out gen
+
 Bob : ./run.sh a.out eva
 
 ## Dijkstra
@@ -50,11 +51,14 @@ cp testinginput/dij/40/* ./    **(resp. 60, 80, 100)**
 bash comp.sh sparse_dij.c
 
 Alice: ./run.sh a.out gen
+
 Bob : ./run.sh a.out eva
 
 # How to Read the Output
 
 **Only focus on Alice side, it outputs:**
+
+Run time: Time in the paper (see Figure 3)
 
 MEM ORAM READ+WRITE: # RAM Accesses in the paper (see Figure 3)
 
