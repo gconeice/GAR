@@ -1,0 +1,37 @@
+TX:             cum:   1.00GB   peak:      0b          rates:      0b      0b      0b
+RX:                    3.23MB              0b                      0b      0b      0b
+TOTAL:                 1.00GB              0b                      0b      0b      0b 
+
+
+admin@ip-172-31-18-154:~/Secure-Computation-of-MIPS-Machine-Code$ ./run.sh a.out gen
+Apr 27, 2022 4:52:53 AM com.appcomsci.mips.binary.Reader init
+WARNING: No section table entry for symbol .mdebug.abi32 section was .mdebug.abi32
+Warning: Halt length listed as 0
+Executing binary file: a.out
+Apr 27, 2022 4:52:53 AM com.appcomsci.mips.binary.Reader init
+WARNING: No section table entry for symbol .mdebug.abi32 section was .mdebug.abi32
+Warning: Halt length listed as 0
+0.088645608
+Alice
+Count:400
+Run time: 42.722298
+Average time / instruction: 0.10680574
+
+Time in CPU: 1.0957441
+Average CPU #ANDs: 2233
+Average CPU time: 0.0027393603
+
+Time in instruction fetch: 1.5742326
+Average fetch #ANDS: 3252
+Average fetch time: 0.0039355815
+Size of Instruction bank:217
+
+Time in loadStore: 39.921223
+Average loadStore #ANDS: 82809
+Average loadStore time: 0.09980306
+Size of Memory:1047
+numBanks with memory: 379
+
+Result:0
+MEM ORAM READ+WRITE:379
+PROG ORAM READ:400

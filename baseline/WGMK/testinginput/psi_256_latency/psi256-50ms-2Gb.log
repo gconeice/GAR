@@ -1,0 +1,47 @@
+admin@ip-172-31-21-25:~/Secure-Computation-of-MIPS-Machine-Code$ ./run.sh a.out gen & ./run.sh a.out eva
+[1] 17905
+Aug 09, 2022 9:03:03 PM com.appcomsci.mips.binary.Reader init
+WARNING: No section table entry for symbol .mdebug.abi32 section was .mdebug.abi32
+Warning: Halt length listed as 0
+Aug 09, 2022 9:03:03 PM com.appcomsci.mips.binary.Reader init
+WARNING: No section table entry for symbol .mdebug.abi32 section was .mdebug.abi32
+Warning: Halt length listed as 0
+Executing binary file: a.out
+Aug 09, 2022 9:03:03 PM com.appcomsci.mips.binary.Reader init
+WARNING: No section table entry for symbol .mdebug.abi32 section was .mdebug.abi32
+Warning: Halt length listed as 0
+Aug 09, 2022 9:03:03 PM com.appcomsci.mips.binary.Reader init
+WARNING: No section table entry for symbol .mdebug.abi32 section was .mdebug.abi32
+Warning: Halt length listed as 0
+1.322900853
+1.50971713
+
+
+admin@ip-172-31-21-25:~/Secure-Computation-of-MIPS-Machine-Code$ 
+admin@ip-172-31-21-25:~/Secure-Computation-of-MIPS-Machine-Code$ 
+admin@ip-172-31-21-25:~/Secure-Computation-of-MIPS-Machine-Code$ Alice
+Count:9800
+Run time: 11495.372
+Average time / instruction: 1.1729971
+
+Time in CPU: 791.79395
+Average CPU #ANDs: 1666
+Average CPU time: 0.0807953
+
+Time in instruction fetch: 266.78915
+Average fetch #ANDS: 972
+Average fetch time: 0.027223382
+Size of Instruction bank:191
+
+Time in loadStore: 10024.471
+Average loadStore #ANDS: 22871
+Average loadStore time: 1.0229052
+Size of Memory:556
+numBanks with memory: 9755
+
+Result:256
+MEM ORAM READ+WRITE:9755
+PROG ORAM READ:9800
+Flush counts:1
+
+[1]+  Done                    ./run.sh a.out gen

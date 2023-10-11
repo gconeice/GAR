@@ -4,9 +4,9 @@ This is the implemented GAR protocol for the paper: **Towards Generic MPC Compil
 
 Eprint link: https://eprint.iacr.org/2023/953
 
-# Set Up Environment
+# Set Up Environment and Build Repo
 
-To set up environment (you might need root):
+To set up environment, then bulld repo (you might need root):
 
    cd build
    
@@ -62,7 +62,7 @@ Note that, the x and y in **./SGC2PC Alice/Bob x y** need to be adjusted accordi
 
 # How to Read the Output
 
-In the Alice side, it outputs:
+**In the Alice side, it outputs:**
 
    MAXACC: #RAM Accesses in the paper, see Figure 3,4
    
@@ -72,11 +72,11 @@ In the Alice side, it outputs:
    
    Garbling time: Gb. Time in the paper, see Figure 4,6
 
-In the Bob side, it outputs:
+**In the Bob side, it outputs:**
 
    E2e time: Total Time in the paper, see Figure 4,6
    
-Note that:
+**Note that:**
 
    Ev. Time (see Figure 4,6) = Total Time - Gb. Time - Trans. Time
    
@@ -90,4 +90,6 @@ E.g., testinginputs/kmp/500-7000/plain in the log for KMP500-7000.
 
 # Execute the Baseline
 
-To be added
+See baseline/WGMK/* for the baseline [WGMK16]
+
+See baseline/EMP/* for the baseline emp-toolkit
