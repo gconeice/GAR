@@ -68,7 +68,7 @@ PROG ORAM READ: # Instruction Fetch in the paper (see Figure 5)
 
 We tested it using linux command `iftop`, e.g.
 
-iftop -i 172.31.34.241 -f 'port 54321'
+iftop -i ens5 -f 'port 54321'
 
 # How to Simulate Network Latency
 
