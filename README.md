@@ -28,7 +28,7 @@ Alice (Garbler):
 	
 	cp ../testinginputs/psi/64/* ./
 	
-	./SGC2PC Alice 129 128
+	./SGC2PC Alice 129 128 localhost
 
 Bob (Evalutor):
 
@@ -60,7 +60,7 @@ Similarly, one can:
 	
 	cp ../testinginputs/kmp/500-7000/* ./
 
-Note that, the x and y in **./SGC2PC Alice/Bob x y ($IP)** need to be adjusted accordingly. The above `cp` will also copy a file called `res`. The `res` (as a testing log we recorded) includes what parameters should be used. In particular, x reflects the #Fragments in the paper (see Figure 4,7), y reflects the #Mem Ent in the paper (see Figure 3,4).
+Note that, the x and y in **./SGC2PC Alice/Bob x y $IP** need to be adjusted accordingly. The above `cp` will also copy a file called `res`. The `res` (as a testing log we recorded) includes what parameters should be used. In particular, x reflects the #Fragments in the paper (see Figure 4,7), y reflects the #Mem Ent in the paper (see Figure 3,4).
 
 # How to Read the Output
 
@@ -97,13 +97,13 @@ E.g., `testinginputs/kmp/500-7000/plain` is the log for KMP500-7000.
 
 **We tested it using benchmark PSI256.**
 
-Re Figure 8 in the paper, we use commands:
+Re Figure 8 in the paper, to set up the network, we use commands:
 
-sudo tc qdisc del dev lo root
+`sudo tc qdisc del dev lo root`
 
-sudo tc qdisc add dev lo root handle 1: tbf rate 2Gbit burst 100000 limit 10000
+`sudo tc qdisc add dev lo root handle 1: tbf rate 2Gbit burst 100000 limit 10000`
 
-sudo tc qdisc add dev lo parent 1:1 handle 10: netem delay 25msec (resp. 50msec)
+`sudo tc qdisc add dev lo parent 1:1 handle 10: netem delay 25msec (resp. 50msec)`
 
 # Execute the Baseline
 
