@@ -61,6 +61,12 @@ void and_gate() {
 //template void transferLargeVector<int>;
 
 int main(int argc, char ** argv) {
+
+  if (argc < 5) {
+	  std::cout << "Usage: a.out Alice/Bob #STEP MEMSIZE IP" << std::endl;
+	  return -1;
+  }
+	
   std::cout << "bandwidth delay product " << adjusted_bandwidth_delay_product << std::endl;
 
   // Form as many connections as you can to maximize throughput
@@ -88,15 +94,6 @@ int main(int argc, char ** argv) {
   //cin >> giant_step;
   uint32_t max_acc_cnt = GenerateBBPath(giant_step, CFG, BBPath);
   std::cout << "MAXACC = " << max_acc_cnt << std::endl;
-
-// #ifdef PLAIN
-//   for (int i = 0; i < giant_step; i++) {
-//     plfout << i << " ";
-//     for (auto x : BBPath[i]) plfout << x << ' ';
-//     plfout << endl;
-//   }
-// #endif
-
 
   if (string(argv[1]) == "Cleartext") {
     SGC::delta = SGC::prg();
@@ -220,7 +217,7 @@ int main(int argc, char ** argv) {
     cout << "Running Bob... " << std::endl;
 
     // Establish connection with Alice
-    const char *address = "127.0.0.1";
+    const char *address = argv[4];
     unsigned int initial_port = 8880;
     emp::NetIO *io = new emp::NetIO(address, initial_port);
     start1 = std::chrono::system_clock::now();

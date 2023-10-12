@@ -18,6 +18,8 @@ We test above methods already on a vanilla Ubuntu 20.04 machine with sse4.1/avx2
 
 The repo is designed to be executed on two parties: the GC garbler (Alice) and the GC evaluator (Bob). By default, Alice and Bob are executed on a same machine (via LAN). To execute on two different machines, please update the connection address in Main.cpp (of Bob) from `127.0.0.1` to the Alice's IP address, then type `make` in folder build.
 
+Let `$IP` denote the IP address of Alice.
+
 As a toy example, to execute the PSI64 benchmark:
 
 Alice (Garbler):
@@ -34,7 +36,7 @@ Bob (Evalutor):
 	
 	cp ../testinginputs/psi/64/* ./
 	
-	./SGC2PC Bob 129 128
+	./SGC2PC Bob 129 128 $IP
 
 Similarly, one can:
 
@@ -58,7 +60,7 @@ Similarly, one can:
 	
 	cp ../testinginputs/kmp/500-7000/* ./
 
-Note that, the x and y in **./SGC2PC Alice/Bob x y** need to be adjusted accordingly. The above `cp` will also copy a file called `res`. The `res` (as a testing log we recorded) includes what parameters should be used. In particular, x reflects the #Fragments in the paper (see Figure 4,7), y reflects the #Mem Ent in the paper (see Figure 3,4).
+Note that, the x and y in **./SGC2PC Alice/Bob x y ($IP)** need to be adjusted accordingly. The above `cp` will also copy a file called `res`. The `res` (as a testing log we recorded) includes what parameters should be used. In particular, x reflects the #Fragments in the paper (see Figure 4,7), y reflects the #Mem Ent in the paper (see Figure 3,4).
 
 # How to Read the Output
 
