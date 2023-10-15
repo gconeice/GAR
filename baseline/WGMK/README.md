@@ -28,11 +28,11 @@ We test above methods already on a vanilla Debian 9 x86_64 machine.
 
 # How to Execute Benchmarks
 
-**Note:** In each testinginput/benchmark/settings, we include a log tested by us.
+**Note:** In each testinginputs/benchmark/settings, we include a log tested by us.
 
 ## PSI
 
-cp testinginput/psi/64/* ./    **(resp. 256, 1024)**
+cp testinginputs/psi/64/* ./    **(resp. 256, 1024)**
 
 **Update the Server.address to the ip of Alice in Bob's file emulator.properties**
 
@@ -44,7 +44,7 @@ Bob : ./run.sh a.out eva
 
 ## Dijkstra
 
-cp testinginput/dij/40/* ./    **(resp. 60, 80, 100)**
+cp testinginputs/dij/40/* ./    **(resp. 60, 80, 100)**
 
 **Update the Server.address to the ip of Alice in Bob's file emulator.properties**
 
